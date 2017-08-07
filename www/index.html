@@ -51,12 +51,17 @@
         </ons-carousel-item>
     </ons-carousel>
     <script>
+        window.onload = function() {
+            stop_lastAudio();
+            setup_audio(1);
+        };
+
         var audioLast = null;
         function stop_lastAudio() {
             if(audioLast)
             {
-                audioLast.stop();
-                alert("stop");
+                audioLast.pause();
+                audioLast.currentTime = 0;
             }
         }
         function setup_audio(index) {
@@ -67,11 +72,17 @@
             } else {
                 ext = '.ogg';
             }
-            var audio = new Audio('audio/p'+index+ext);
-            audio.load();
-            audio.play();
-            audioLast = audio;
-            alert("play"+index);
+            audioLast = null;
+            try {
+                var audio = new Audio();
+                audio.src = "audio/p"+index+ext;
+                audio.load();
+                audio.play();
+                audioLast = audio;
+            } catch (e) {
+                alert("not found");
+                return;
+            }
         }
      
         document.getElementById('crsel').addEventListener('postchange',function(e){
