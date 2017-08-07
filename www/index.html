@@ -22,19 +22,30 @@
         vertical-align: middle;
         height: 100%;
     }
+    .contents img {
+        width: 100%;
+    }
     </style>
 </head>
 <body>
-    <ons-carousel swipeable overscrollable fullscreen auto-scroll auto-scroll-ratio="0.1">
+    <ons-carousel swipeable overscrollable fullscreen auto-scroll auto-scroll-ratio="0.1" var="crsel" id="crsel">
         <ons-carousel-item>
-            <div class="contents">ああああ</div>
+            <div class="contents"><img src="img/p1.jpg"></div>
         </ons-carousel-item>
         <ons-carousel-item>
-            <div class="contents">いいいい</div>
+            <div class="contents"><img src="img/p2.jpg"></div>
         </ons-carousel-item>
         <ons-carousel-item>
-            <div class="contents">うううう</div>
+            <div class="contents"><img src="img/p3.jpg"></div>
+        </ons-carousel-item>
+        <ons-carousel-item>
+            <div class="contents"><img src="img/p4.jpg"></div>
         </ons-carousel-item>
     </ons-carousel>
+    <script>
+        document.getElementById('crsel').addEventListener('postchange',function(e){
+            alert("testlog="+e.activeIndex);
+        });
+    </script>
 </body>
 </html>
