@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+  <script src="components/loader.js"></script>
+  <script src="lib/onsenui/js/onsenui.min.js"></script>
+
+  <link rel="stylesheet" href="components/loader.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+  <link rel="stylesheet" href="css/style.css">
+
+    <style>
+    ons-carousel-item {
+        display: table;
+    }
+    .contents {
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+        height: 100%;
+    }
+    .contents img {
+        width: 100%;
+    }
+    </style>
+</head>
+<body>
+    <ons-carousel swipeable overscrollable fullscreen auto-scroll auto-scroll-ratio="0.1" var="crsel" id="crsel">
+        <ons-carousel-item>
+            <div class="contents">
+                <img src="img/p1.jpg">
+            </div>
+        </ons-carousel-item>
+        <ons-carousel-item>
+            <div class="contents">
+                <img src="img/p2.jpg">
+            </div>
+        </ons-carousel-item>
+        <ons-carousel-item>
+            <div class="contents">
+                <img src="img/p3.jpg">
+            </div>
+        </ons-carousel-item>
+        <ons-carousel-item>
+            <div class="contents">
+                <img src="img/p4.jpg">
+            </div>
+        </ons-carousel-item>
+    </ons-carousel>
+    <script>
+        window.onload = function() {
+            stop_lastAudio();
+            setup_audio(1);
+            alert(teststrval);
+        };
+
+        var audioLast = null;
+        function stop_lastAudio() {
+            if(audioLast)
+            {
+                audioLast.pause();
+                audioLast.currentTime = 0;
+            }
+        }
+        function setup_audio(index) {
+            var audioTemp = new Audio();
+            var ext;
+            if (audioTemp.canPlayType('audio/aac')) {
+                ext = '.m4a';
+            } else {
+                ext = '.ogg';
+            }
+            audioLast = null;
+            try {
+                var audio = new Audio();
+                audio.src = "audio/p"+index+ext;
+                audio.load();
+                audio.play();
+                audioLast = audio;
+            } catch (e) {
+                alert("not found");
+                return;
+            }
+        }
+     
+        document.getElementById('crsel').addEventListener('postchange',function(e){
+            stop_lastAudio();
+            setup_audio((e.activeIndex+1));
+        });
+    </script>
+</body>
+</html>

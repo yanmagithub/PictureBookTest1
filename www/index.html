@@ -1,94 +1,30 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
-  <script src="components/loader.js"></script>
-  <script src="lib/onsenui/js/onsenui.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+  <script type="text/javascript">
+    function frameClick() {
+      document.location.href = "book.html";
+    }
+  </script>
+  <style type="text/css">
+  <!--
+    .frame {
+      width: 160px;
+      height: 48px;
+      line-height: 48px;
+      border:solid 1px #0094ff;
+      background-color:#E0E0E0;
+    }
+  -->
+  </style>
 
-  <link rel="stylesheet" href="components/loader.css">
-  <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
-  <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
-  <link rel="stylesheet" href="css/style.css">
-
-    <style>
-    ons-carousel-item {
-        display: table;
-    }
-    .contents {
-        display: table-cell;
-        text-align: center;
-        vertical-align: middle;
-        height: 100%;
-    }
-    .contents img {
-        width: 100%;
-    }
-    </style>
 </head>
 <body>
-    <ons-carousel swipeable overscrollable fullscreen auto-scroll auto-scroll-ratio="0.1" var="crsel" id="crsel">
-        <ons-carousel-item>
-            <div class="contents">
-                <img src="img/p1.jpg">
-            </div>
-        </ons-carousel-item>
-        <ons-carousel-item>
-            <div class="contents">
-                <img src="img/p2.jpg">
-            </div>
-        </ons-carousel-item>
-        <ons-carousel-item>
-            <div class="contents">
-                <img src="img/p3.jpg">
-            </div>
-        </ons-carousel-item>
-        <ons-carousel-item>
-            <div class="contents">
-                <img src="img/p4.jpg">
-            </div>
-        </ons-carousel-item>
-    </ons-carousel>
-    <script>
-        window.onload = function() {
-            stop_lastAudio();
-            setup_audio(1);
-        };
-
-        var audioLast = null;
-        function stop_lastAudio() {
-            if(audioLast)
-            {
-                audioLast.pause();
-                audioLast.currentTime = 0;
-            }
-        }
-        function setup_audio(index) {
-            var audioTemp = new Audio();
-            var ext;
-            if (audioTemp.canPlayType('audio/aac')) {
-                ext = '.m4a';
-            } else {
-                ext = '.ogg';
-            }
-            audioLast = null;
-            try {
-                var audio = new Audio();
-                audio.src = "audio/p"+index+ext;
-                audio.load();
-                audio.play();
-                audioLast = audio;
-            } catch (e) {
-                alert("not found");
-                return;
-            }
-        }
-     
-        document.getElementById('crsel').addEventListener('postchange',function(e){
-            stop_lastAudio();
-            setup_audio((e.activeIndex+1));
-        });
-    </script>
+  <div class="frame" onclick="frameClick();">ページ遷移します。</div>
+  <script>
+    teststrval = "stringinindex.html";
+  </script>
 </body>
 </html>
