@@ -30,21 +30,53 @@
 <body>
     <ons-carousel swipeable overscrollable fullscreen auto-scroll auto-scroll-ratio="0.1" var="crsel" id="crsel">
         <ons-carousel-item>
-            <div class="contents"><img src="img/p1.jpg"></div>
+            <div class="contents">
+                <img src="img/p1.jpg">
+            </div>
         </ons-carousel-item>
         <ons-carousel-item>
-            <div class="contents"><img src="img/p2.jpg"></div>
+            <div class="contents">
+                <img src="img/p2.jpg">
+            </div>
         </ons-carousel-item>
         <ons-carousel-item>
-            <div class="contents"><img src="img/p3.jpg"></div>
+            <div class="contents">
+                <img src="img/p3.jpg">
+            </div>
         </ons-carousel-item>
         <ons-carousel-item>
-            <div class="contents"><img src="img/p4.jpg"></div>
+            <div class="contents">
+                <img src="img/p4.jpg">
+            </div>
         </ons-carousel-item>
     </ons-carousel>
     <script>
+        var audioLast = null;
+        function stop_lastAudio() {
+            if(audioLast)
+            {
+                audioLast.stop();
+                alert("stop");
+            }
+        }
+        function setup_audio(index) {
+            var audioTemp = new Audio();
+            var ext;
+            if (audioTemp.canPlayType('audio/aac')) {
+                ext = '.m4a';
+            } else {
+                ext = '.ogg';
+            }
+            var audio = new Audio('audio/p'+index+ext);
+            audio.load();
+            audio.play();
+            audioLast = audio;
+            alert("play"+index);
+        }
+     
         document.getElementById('crsel').addEventListener('postchange',function(e){
-            alert("testlog="+e.activeIndex);
+            stop_lastAudio();
+            setup_audio((e.activeIndex+1));
         });
     </script>
 </body>
