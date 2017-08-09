@@ -38,23 +38,9 @@
         height: 100%;
     }
 
-    /* PC環境のときにのみ表示 */
-    @media screen and (max-width: 1024px) { /* 「画面横幅が1024px以下の場合には」という意味 */
-        .contents img {
-            width: 100%;
-        }
-    }
-     
-    /* スマホ・タブレットのときにのみ表示 */
-    @media screen and (min-width: 1025px) { /* 「画面横幅が1025px以上の場合には」という意味 */
-        .contents img {
-            height: 100%;
-        }
-    }
-
     #pages {
         padding: 20px;
-        overflow-y: scroll;
+//        overflow-y: scroll;
     }
     #button1 {
         padding: 20px;
@@ -64,9 +50,27 @@
     }
     #button1 a {
     }
-    #button1 a img {
-        width: 100%;
+
+    /* スマホ用設定 */
+    @media screen and (max-width: 1024px) { /* 「画面横幅が1024px以下の場合には」という意味 */
+        .contents img {
+            width: 100%;
+        }
+        #button1 a img {
+            width: 50%;
+        }
     }
+     
+    /* PC用設定 */
+    @media screen and (min-width: 1025px) { /* 「画面横幅が1025px以上の場合には」という意味 */
+        .contents img {
+            height: 100%;
+        }
+        #button1 a img {
+            width: 100%;
+        }
+    }
+    
     </style>
 </head>
 <body>
