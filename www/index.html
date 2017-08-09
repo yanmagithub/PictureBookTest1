@@ -37,9 +37,21 @@
         vertical-align: middle;
         height: 100%;
     }
-    .contents img {
-        width: 100%;
+
+    /* PC環境のときにのみ表示 */
+    @media screen and (max-width: 1024px) { /* 「画面横幅が1024px以下の場合には」という意味 */
+        .contents img {
+            width: 100%;
+        }
     }
+     
+    /* スマホ・タブレットのときにのみ表示 */
+    @media screen and (min-width: 1025px) { /* 「画面横幅が1025px以上の場合には」という意味 */
+        .contents img {
+            height: 100%;
+        }
+    }
+
     #pages {
         padding: 20px;
         overflow-y: scroll;
